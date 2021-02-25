@@ -1,9 +1,8 @@
 package com.laiteam.echowall.di.application
 
-import com.laiteam.echowall.di.user.ActivityComponent
+import com.laiteam.echowall.di.activity.ActivityComponent
 import com.laiteam.echowall.di.user.UserComponent
 import com.laiteam.echowall.network.NetworkModule
-import com.laiteam.echowall.sharedpreference.AppStorageModule
 import com.laiteam.echowall.user.UserManager
 import dagger.Component
 import javax.inject.Singleton

@@ -4,13 +4,10 @@ import android.widget.Toast
 import com.laiteam.echowall.R
 import com.laiteam.echowall.base.DaggerBaseActivity
 import com.laiteam.echowall.databinding.ActivityOnBoardingBinding
-import com.laiteam.echowall.di.user.ActivityComponent
-import com.laiteam.echowall.ui.MainActivity
+import com.laiteam.echowall.di.activity.ActivityComponent
+import com.laiteam.echowall.ui.main.MainActivity
 
 class OnBoardingActivity : DaggerBaseActivity<ActivityOnBoardingBinding>() {
-
-    override fun setupActivityScopeInject(activityComponent: ActivityComponent) {
-    }
 
     override fun initViews() {
         super.initViews()
@@ -35,5 +32,9 @@ class OnBoardingActivity : DaggerBaseActivity<ActivityOnBoardingBinding>() {
 
     override fun createViewBinding(): ActivityOnBoardingBinding {
         return ActivityOnBoardingBinding.inflate(layoutInflater)
+    }
+
+    override fun setupActivityScopeInject(activityComponent: ActivityComponent) {
+//        TODO("Not yet implemented")
     }
 }

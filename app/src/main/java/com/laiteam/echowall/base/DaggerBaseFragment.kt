@@ -3,7 +3,7 @@ package com.laiteam.echowall.base
 import android.content.Context
 import androidx.viewbinding.ViewBinding
 import com.laiteam.echowall.App
-import com.laiteam.echowall.di.user.ActivityComponent
+import com.laiteam.echowall.di.activity.ActivityComponent
 import com.laiteam.echowall.user.UserManager
 
 abstract class DaggerBaseFragment<VM : ViewBinding> : BaseFragment<VM>() {
@@ -12,10 +12,10 @@ abstract class DaggerBaseFragment<VM : ViewBinding> : BaseFragment<VM>() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        setupActivityScopeInject((context as DaggerBaseActivity<*>).activityComponent)
-        userManager = (context.application
+        userManager = (context.applicationContext
             as App).appComponent.userManager()
+        setupInjection((context as DaggerBaseActivity<*>).activityComponent)
     }
 
-    protected open fun setupActivityScopeInject(activityComponent: ActivityComponent){}
+    protected open fun setupInjection(activityComponent: ActivityComponent){}
 }

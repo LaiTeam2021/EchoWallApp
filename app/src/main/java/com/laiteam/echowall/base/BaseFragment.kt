@@ -20,10 +20,7 @@ abstract class BaseFragment<VM : ViewBinding> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViewModel(view, savedInstanceState)
     }
-
-    protected abstract fun initViewModel(view: View?, savedInstanceState: Bundle?)
     protected abstract fun createFragmentViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?

@@ -2,8 +2,7 @@ package com.laiteam.echowall.base
 
 import android.os.Bundle
 import androidx.viewbinding.ViewBinding
-import com.laiteam.echowall.di.user.ActivityComponent
-import com.laiteam.echowall.di.user.UserComponent
+import com.laiteam.echowall.di.activity.ActivityComponent
 import com.laiteam.echowall.user.UserManager
 
 abstract class DaggerBaseActivity<VM : ViewBinding> : BaseActivity<VM>() {
@@ -16,5 +15,5 @@ abstract class DaggerBaseActivity<VM : ViewBinding> : BaseActivity<VM>() {
         super.onCreate(savedInstanceState)
     }
 
-    protected open fun setupActivityScopeInject(activityComponent: ActivityComponent){}
+    protected abstract fun setupActivityScopeInject(activityComponent: ActivityComponent)
 }
