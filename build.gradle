@@ -1,6 +1,17 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.30"
+    ext {
+        kotlin_version = "1.4.30"
+        dagger_version = "2.27"
+        retrofit_version = "2.9.0"
+        flipper_version = "0.74.0"
+        navigation_version = "2.3.3"
+        mvvm_version = "2.3.0"
+        mockito_version = "3.3.1"
+        arch_core_testing_version = "1.1.1"
+        leak_canary_version = "2.6"
+    }
+
     repositories {
         google()
         jcenter()
