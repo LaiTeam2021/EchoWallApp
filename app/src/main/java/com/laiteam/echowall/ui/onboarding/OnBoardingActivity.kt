@@ -10,7 +10,6 @@ import com.laiteam.echowall.ui.main.MainActivity
 class OnBoardingActivity : DaggerBaseActivity<ActivityOnBoardingBinding>() {
 
     override fun initViews() {
-        super.initViews()
         if (userManager.shouldAutoLogin()) {
             startActivityAfterFinishThis(MainActivity::class.java)
         }
@@ -35,6 +34,10 @@ class OnBoardingActivity : DaggerBaseActivity<ActivityOnBoardingBinding>() {
     }
 
     override fun setupActivityScopeInject(activityComponent: ActivityComponent) {
-//        TODO("Not yet implemented")
+//       TODO("Not yet implemented")
+    }
+
+    override fun initData() {
+      //  TODO("Not yet implemented")
     }
 }

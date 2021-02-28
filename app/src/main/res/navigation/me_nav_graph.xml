@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/me_nav_graph"
+    app:startDestination="@id/meFragment">
+
+    <fragment
+        android:id="@+id/debugFragment"
+        android:name="com.laiteam.echowall.ui.me.debug.DebugFragment"
+        android:label="DebugFragment" />
+    <fragment
+        android:id="@+id/meFragment"
+        android:name="com.laiteam.echowall.ui.me.MeFragment"
+        android:label="MeFragment" >
+        <action
+            android:id="@+id/action_meFragment_to_debugFragment"
+            app:destination="@id/debugFragment" />
+    </fragment>
+</navigation>

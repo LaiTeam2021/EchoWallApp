@@ -12,7 +12,7 @@ import javax.inject.Inject
 class FeedFragment : DaggerBaseUserFragment<FragmentFeedBinding>() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    val userViewModel: FeedViewModel by viewModels {
+    val viewModel: FeedViewModel by viewModels {
         viewModelFactory
     }
 
@@ -21,11 +21,18 @@ class FeedFragment : DaggerBaseUserFragment<FragmentFeedBinding>() {
         inflater: LayoutInflater,
         container: ViewGroup?
     ): FragmentFeedBinding {
-       var temp = userViewModel
        return FragmentFeedBinding.inflate(layoutInflater, container, false)
     }
 
     override fun setupInjection(userActivityComponent: UserActivityComponent) {
             userActivityComponent.inject(this)
+    }
+
+    override fun initViews() {
+        // TODO("Not yet implemented")
+    }
+
+    override fun initData() {
+       // TODO("Not yet implemented")
     }
 }

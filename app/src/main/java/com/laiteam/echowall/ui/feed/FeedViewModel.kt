@@ -1,9 +1,8 @@
 package com.laiteam.echowall.ui.feed
 
-import androidx.lifecycle.ViewModel
-import com.laiteam.echowall.di.scope.UserScope
+import com.laiteam.echowall.base.BaseViewModel
 import javax.inject.Inject
 
-class FeedViewModel @Inject constructor(private val feedRepository: FeedRepository) : ViewModel() {
+class FeedViewModel @Inject constructor(private val feedRepository: FeedRepository) : BaseViewModel(feedRepository) {
 
 }

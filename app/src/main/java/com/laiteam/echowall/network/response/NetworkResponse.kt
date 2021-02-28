@@ -1,12 +1,23 @@
 package com.laiteam.echowall.network.response
 
-sealed class NetworkResponse<out T>
+data class NetworkResponse<out T>(val status: Status, val data: T?, val message: String?) {
+    companion object {
+        fun <T> success(data: T?): NetworkResponse<T> {
+            return NetworkResponse(Status.SUCCESS, data, null)
+        }
 
-// By using Nothing as T, Loading is a subtype of all NetworkResult<T>
-object Loading : NetworkResponse<Nothing>()
+        fun <T> error(msg: String, data: T?): NetworkResponse<T> {
+            return NetworkResponse(Status.ERROR, data, msg)
+        }
 
-// Successful results are stored in data
-data class Success<out T>(val data: T) : NetworkResponse<T>()
+        fun <T> loading(data: T?): NetworkResponse<T> {
+            return NetworkResponse(Status.LOADING, data, null)
+        }
+    }
+}
 
-// By using Nothing as T, all NetworkError instances are a subtypes of all NetworkResults<T>
-data class Error(val exception: Throwable) : NetworkResponse<Nothing>()
+enum class Status {
+    SUCCESS,
+    ERROR,
+    LOADING
+}

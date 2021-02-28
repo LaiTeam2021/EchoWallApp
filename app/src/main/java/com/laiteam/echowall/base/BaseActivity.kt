@@ -6,14 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.laiteam.echowall.App
 
-abstract class BaseActivity<VM : ViewBinding> : AppCompatActivity() {
+abstract class BaseActivity<VM : ViewBinding?> : AppCompatActivity() {
 
-    protected lateinit var binding: VM
+    private var _binding: VM? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = createViewBinding()
-        setContentView(binding.root)
+        _binding = createViewBinding()
+        setContentView(_binding!!.root)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -21,7 +21,9 @@ abstract class BaseActivity<VM : ViewBinding> : AppCompatActivity() {
         initViews()
     }
 
-    protected open fun initViews() {}
+    protected abstract fun initViews()
+
+    protected abstract fun initData()
 
     protected fun startActivity(clazz: Class<*>) {
         startActivity(Intent(this, clazz))
@@ -32,7 +34,14 @@ abstract class BaseActivity<VM : ViewBinding> : AppCompatActivity() {
         finish()
     }
 
-    protected abstract fun createViewBinding(): VM
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
+    protected abstract fun createViewBinding(): VM?
     protected val app: App
         get() = application as App
+
+    protected val binding get() = (_binding!! as VM)
 }

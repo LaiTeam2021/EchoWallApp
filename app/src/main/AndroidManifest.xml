@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.laiteam.echowall">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -12,19 +14,19 @@
         android:theme="@style/Theme.EchoWall">
         <activity
             android:name=".ui.onboarding.OnBoardingActivity"
-            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden" >
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity"
-          >
-        </activity>
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"></activity>
         <activity
             android:name="com.facebook.flipper.android.diagnostics.FlipperDiagnosticActivity"
             android:exported="true" />
     </application>
-<!--    android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"-->
+
 </manifest>

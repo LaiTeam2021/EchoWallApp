@@ -1,5 +1,6 @@
 package com.laiteam.echowall.network
 
+import com.android.example.github.util.LiveDataCallAdapterFactory
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import com.laiteam.echowall.App
 import com.laiteam.echowall.BuildConfig
@@ -22,6 +23,7 @@ class NetworkModule {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
+            .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

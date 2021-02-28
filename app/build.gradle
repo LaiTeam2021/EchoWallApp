@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-kapt'
 }
 
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -35,7 +37,7 @@ android {
     productFlavors {
         local {
             dimension "version"
-            buildConfigField('String', "BASE_URL", '"http://127.0.0.1:8080/"')
+            buildConfigField('String', "BASE_URL", '"http://10.0.2.2:8080/"')
         }
 
         dev {
@@ -83,6 +85,7 @@ dependencies {
     releaseImplementation "com.facebook.flipper:flipper-noop:${rootProject.ext.flipper_version}"
     debugImplementation "com.facebook.flipper:flipper-network-plugin:${rootProject.ext.flipper_version}"
     debugImplementation 'com.facebook.soloader:soloader:0.10.1'
+    debugImplementation "com.facebook.flipper:flipper-litho-plugin:${rootProject.ext.flipper_version}"
 
     // Navigation component
     implementation "androidx.navigation:navigation-fragment-ktx:${rootProject.ext.navigation_version}"
@@ -95,14 +98,28 @@ dependencies {
     //leakcanary
     debugImplementation "com.squareup.leakcanary:leakcanary-android:${rootProject.ext.leak_canary_version}"
 
+    //litho
+    implementation "com.facebook.litho:litho-fresco:${rootProject.ext.litho_version}"
+    implementation "com.facebook.litho:litho-core:${rootProject.ext.litho_version}"
+    implementation "com.facebook.litho:litho-widget:${rootProject.ext.litho_version}"
+    implementation "com.facebook.litho:litho-sections-core:${rootProject.ext.litho_version}"
+    implementation "com.facebook.litho:litho-sections-widget:${rootProject.ext.litho_version}"
+    compileOnly "com.facebook.litho:litho-sections-annotations:${rootProject.ext.litho_version}"
+
+    kapt "com.facebook.litho:litho-sections-processor:${rootProject.ext.litho_version}"
+    kapt "com.facebook.litho:litho-processor:${rootProject.ext.litho_version}"
+
+
     //testing
     testImplementation "org.mockito:mockito-android:${rootProject.ext.mockito_version}"
     testImplementation "android.arch.core:core-testing:${rootProject.ext.arch_core_testing_version}"
     testImplementation 'junit:junit:4.+'
+    testImplementation "com.facebook.litho:litho-testing:${rootProject.ext.litho_version}"
 
     //android test
     androidTestImplementation "org.mockito:mockito-android:${rootProject.ext.mockito_version}"
     androidTestImplementation "android.arch.core:core-testing:${rootProject.ext.arch_core_testing_version}"
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

@@ -10,6 +10,7 @@ abstract class DaggerBaseFragment<VM : ViewBinding> : BaseFragment<VM>() {
 
     lateinit var userManager: UserManager
 
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         userManager = (context.applicationContext
