@@ -109,6 +109,14 @@ dependencies {
     kapt "com.facebook.litho:litho-sections-processor:${rootProject.ext.litho_version}"
     kapt "com.facebook.litho:litho-processor:${rootProject.ext.litho_version}"
 
+    //room database
+    def room_version = "2.2.6"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
+    // optional - Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
 
     //testing
     testImplementation "org.mockito:mockito-android:${rootProject.ext.mockito_version}"
