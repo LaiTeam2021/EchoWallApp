@@ -15,5 +15,5 @@ abstract class DaggerBaseActivity<VM : ViewBinding> : BaseActivity<VM>() {
         super.onCreate(savedInstanceState)
     }
 
-    protected abstract fun setupActivityScopeInject(activityComponent: ActivityComponent)
+    protected open fun setupActivityScopeInject(activityComponent: ActivityComponent) {}
 }

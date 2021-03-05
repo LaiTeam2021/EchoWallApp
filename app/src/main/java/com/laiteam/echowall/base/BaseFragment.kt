@@ -1,5 +1,6 @@
 package com.laiteam.echowall.base
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,9 +25,9 @@ abstract class BaseFragment<VM : ViewBinding?> : Fragment() {
         initData()
     }
 
-    protected abstract fun initViews()
+    protected open fun initViews() {}
 
-    protected abstract fun initData()
+    protected open fun initData() {}
 
     protected abstract fun createFragmentViewBinding(
         inflater: LayoutInflater,
@@ -36,6 +37,15 @@ abstract class BaseFragment<VM : ViewBinding?> : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun startActivity(clazz: Class<*>) {
+        startActivity(Intent(context, clazz))
+    }
+
+    fun startActivityAfterFinishThis(clazz: Class<*>) {
+        startActivity(Intent(context, clazz))
+        activity?.finish()
     }
 
     protected val binding get() = (_binding!! as VM)

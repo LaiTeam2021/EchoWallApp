@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">回音壁</string>
-    <!--    LoginActivity-->
+
+    <!--    main bottom menu-->
+    <string name="feed">首页</string>
+    <string name="explore">探索</string>
+    <string name="notification">消息</string>
+    <string name="me">我的</string>
+
+    <!--    OnboardingActivity-->
     <string name="user_name_hint">用户名</string>
     <string name="login">开始</string>
     <string name="error_user_name">用户名不能为空</string>
+
+    <!--    MeFragment-->
+    <string name="debug">Debug</string>
+    <string name="logout">退出</string>
 </resources>

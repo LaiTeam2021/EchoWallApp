@@ -21,15 +21,15 @@ abstract class BaseActivity<VM : ViewBinding?> : AppCompatActivity() {
         initViews()
     }
 
-    protected abstract fun initViews()
+    protected open fun initViews() {}
 
-    protected abstract fun initData()
+    protected open fun initData() {}
 
-    protected fun startActivity(clazz: Class<*>) {
+    fun startActivity(clazz: Class<*>) {
         startActivity(Intent(this, clazz))
     }
 
-    protected fun startActivityAfterFinishThis(clazz: Class<*>) {
+    fun startActivityAfterFinishThis(clazz: Class<*>) {
         startActivity(Intent(this, clazz))
         finish()
     }

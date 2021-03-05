@@ -18,5 +18,5 @@ abstract class DaggerBaseUserActivity<VM : ViewBinding> : BaseActivity<VM>() {
         super.onCreate(savedInstanceState)
     }
 
-    protected abstract fun setupInjection(userActivityComponent: UserActivityComponent)
+    protected open fun setupInjection(userActivityComponent: UserActivityComponent){}
 }
