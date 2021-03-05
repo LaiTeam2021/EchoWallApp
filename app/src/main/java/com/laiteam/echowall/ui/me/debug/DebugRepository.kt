@@ -28,7 +28,6 @@ class DebugRepository @Inject constructor(private val api: Api) : BaseRepository
 
             override fun shouldSave(data: SeverInfo) = false
 
-
         }.asLiveData()
     }
 }

@@ -11,11 +11,6 @@ import com.laiteam.echowall.ui.onboarding.OnBoardingActivity
 class MainActivity : DaggerBaseUserActivity<ActivityMainBinding>() {
 
     override fun initViews() {
-        binding.logout.setOnClickListener {
-            if (userManager.onUserLogout()) {
-                startActivityAfterFinishThis(OnBoardingActivity::class.java)
-            }
-        }
         binding.mainViewpager.adapter = MainViewPagerAdapter(supportFragmentManager)
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { it ->
             when (it.itemId) {

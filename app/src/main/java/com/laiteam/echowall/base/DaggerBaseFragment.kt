@@ -14,9 +14,9 @@ abstract class DaggerBaseFragment<VM : ViewBinding> : BaseFragment<VM>() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         userManager = (context.applicationContext
-            as App).appComponent.userManager()
+                as App).appComponent.userManager()
         setupInjection((context as DaggerBaseActivity<*>).activityComponent)
     }
 
-    protected open fun setupInjection(activityComponent: ActivityComponent){}
+    protected open fun setupInjection(activityComponent: ActivityComponent) {}
 }

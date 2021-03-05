@@ -17,5 +17,5 @@ abstract class DaggerBaseUserFragment<VM : ViewBinding> : BaseFragment<VM>() {
         setupInjection((context as DaggerBaseUserActivity<*>).userActivityComponent)
     }
 
-    protected abstract fun setupInjection(userActivityComponent: UserActivityComponent)
+    protected open fun setupInjection(userActivityComponent: UserActivityComponent) {}
 }
