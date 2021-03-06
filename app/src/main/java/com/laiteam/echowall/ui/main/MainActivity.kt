@@ -2,18 +2,29 @@ package com.laiteam.echowall.ui.main
 
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.navigation.fragment.NavHostFragment
+import com.google.android.material.shape.CornerFamily.ROUNDED
+import com.google.android.material.shape.MaterialShapeDrawable
 import com.laiteam.echowall.R
-import com.laiteam.echowall.base.DaggerBaseUserActivity
+import com.laiteam.echowall.base.DaggerBaseActivity
 import com.laiteam.echowall.databinding.ActivityMainBinding
-import com.laiteam.echowall.di.user.UserActivityComponent
-import com.laiteam.echowall.ui.onboarding.OnBoardingActivity
+import com.laiteam.echowall.di.user.ActivityComponent
 
-class MainActivity : DaggerBaseUserActivity<ActivityMainBinding>() {
+
+class MainActivity : DaggerBaseActivity<ActivityMainBinding>() {
 
     override fun initViews() {
         binding.mainViewpager.adapter = MainViewPagerAdapter(supportFragmentManager)
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener { it ->
-            when (it.itemId) {
+
+        val bottomBarBackground = binding.bottomAppBar.background as MaterialShapeDrawable
+        bottomBarBackground.shapeAppearanceModel = bottomBarBackground.shapeAppearanceModel
+                .toBuilder()
+                .setTopLeftCorner(ROUNDED, resources.getDimension(R.dimen.radius_8dp))
+                .setTopRightCorner(ROUNDED, resources.getDimension(R.dimen.radius_8dp))
+                .build()
+        binding.bottomNavigationView.background = null
+        binding.bottomNavigationView.menu.getItem(2).isEnabled = false
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
                 R.id.feed -> {
                     binding.mainViewpager.currentItem = 0
                     return@setOnNavigationItemSelectedListener true
@@ -37,8 +48,8 @@ class MainActivity : DaggerBaseUserActivity<ActivityMainBinding>() {
 
     override fun onBackPressed() {
         (((binding.mainViewpager.adapter as FragmentStatePagerAdapter).instantiateItem(
-            binding.mainViewpager,
-            binding.mainViewpager.currentItem
+                binding.mainViewpager,
+                binding.mainViewpager.currentItem
         )) as NavHostFragment).apply {
             if (navController.popBackStack()) {
             } else {
@@ -54,7 +65,7 @@ class MainActivity : DaggerBaseUserActivity<ActivityMainBinding>() {
         return ActivityMainBinding.inflate(layoutInflater)
     }
 
-    override fun setupInjection(userActivityComponent: UserActivityComponent) {
-        userActivityComponent.inject(this)
+    override fun setupInjection(activityComponent: ActivityComponent) {
+        activityComponent.inject(this)
     }
 }

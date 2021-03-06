@@ -1,6 +1,6 @@
 package com.laiteam.echowall.di.application
 
-import com.laiteam.echowall.di.activity.ActivityComponent
+import com.laiteam.echowall.di.activity.OnBoardingComponent
 import com.laiteam.echowall.di.user.UserComponent
 import com.laiteam.echowall.network.NetworkModule
 import com.laiteam.echowall.user.UserManager
@@ -19,6 +19,6 @@ interface AppComponent {
 
     fun userComponent(): UserComponent.Factory
 
-    fun activityComponent(): ActivityComponent.Factory
+    fun onBoardingComponent(): OnBoardingComponent.Factory
 
 }

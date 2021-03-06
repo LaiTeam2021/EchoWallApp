@@ -1,7 +1,8 @@
 package com.laiteam.echowall.di.user
 
+import com.laiteam.echowall.di.fragment.FragmentComponent
 import com.laiteam.echowall.di.scope.ActivityScope
-import com.laiteam.echowall.di.viewmodel.UserViewModelModule
+import com.laiteam.echowall.di.viewmodel.ViewModelModule
 import com.laiteam.echowall.ui.feed.FeedFragment
 import com.laiteam.echowall.ui.main.MainActivity
 import com.laiteam.echowall.ui.me.debug.DebugFragment
@@ -9,16 +10,15 @@ import dagger.Subcomponent
 
 @ActivityScope
 @Subcomponent(
-    modules = [UserViewModelModule::class]
+    modules = [ViewModelModule::class]
 )
-interface UserActivityComponent {
+interface ActivityComponent {
     @Subcomponent.Factory
     interface Factory {
-        fun create(): UserActivityComponent
+        fun create(): ActivityComponent
     }
 
     fun inject(activity: MainActivity)
 
-    fun inject(fragment: FeedFragment)
-    fun inject(fragment: DebugFragment)
+    fun fragmentComponent(): FragmentComponent.Factory
 }

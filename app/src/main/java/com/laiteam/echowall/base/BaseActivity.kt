@@ -5,13 +5,16 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.laiteam.echowall.App
+import com.laiteam.echowall.user.UserManager
 
 abstract class BaseActivity<VM : ViewBinding?> : AppCompatActivity() {
-
+   protected lateinit var userManager: UserManager
     private var _binding: VM? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        userManager = app.appComponent.userManager()
         _binding = createViewBinding()
         setContentView(_binding!!.root)
     }
@@ -19,6 +22,7 @@ abstract class BaseActivity<VM : ViewBinding?> : AppCompatActivity() {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         initViews()
+        initData()
     }
 
     protected open fun initViews() {}

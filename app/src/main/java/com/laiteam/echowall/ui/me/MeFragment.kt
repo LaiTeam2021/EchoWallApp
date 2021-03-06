@@ -1,16 +1,12 @@
 package com.laiteam.echowall.ui.me
 
 import androidx.navigation.fragment.NavHostFragment
-import com.laiteam.echowall.base.DaggerBaseUserLithoFragment
-import com.laiteam.echowall.di.user.UserActivityComponent
+import com.laiteam.echowall.base.DaggerBaseLithoFragment
 
-class MeFragment : DaggerBaseUserLithoFragment() {
-    override fun setupInjection(userActivityComponent: UserActivityComponent) {
-
-    }
+class MeFragment : DaggerBaseLithoFragment() {
 
     override fun initData() {
         val environment = MeEnvironment(NavHostFragment.findNavController(this), userManager)
-        setComponentAsync(MeActivityComponent.create<MeEnvironment>(c).environment(environment).build())
+        setComponentAsync(MeFragmentRootComponent.create<MeEnvironment>(c).environment(environment).build())
     }
 }

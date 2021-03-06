@@ -11,5 +11,5 @@ interface UserComponent {
         fun create(): UserComponent
     }
 
-    fun userActivityComponent(): UserActivityComponent.Factory
+    fun activityComponent(): ActivityComponent.Factory
 }

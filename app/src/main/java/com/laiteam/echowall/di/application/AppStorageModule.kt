@@ -1,7 +1,5 @@
 package com.laiteam.echowall.di.application
 
-import androidx.lifecycle.ViewModelProvider
-import com.laiteam.echowall.mvvm.ViewModelFactory
 import com.laiteam.echowall.sharedpreference.AppSharedPreferencesStorage
 import com.laiteam.echowall.sharedpreference.Storage
 import dagger.Binds

@@ -10,7 +10,7 @@ import com.laiteam.echowall.component.LabelComponent;
 import com.laiteam.echowall.network.model.SeverInfo;
 
 @LayoutSpec
-class DebugFragmentComponentSpec {
+class DebugFragmentRootComponentSpec {
     @OnCreateLayout
     static Component onCreateLayout(ComponentContext c, @Prop SeverInfo severInfo) {
         return Column.create(c)

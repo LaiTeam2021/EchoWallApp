@@ -19,6 +19,7 @@ class MainViewPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(
 
         return when (position) {
             1 -> NavHostFragment.create(R.navigation.feed_nav_graph)
+            2 -> NavHostFragment.create(R.navigation.notification_nav_graph)
             3 -> NavHostFragment.create(R.navigation.me_nav_graph)
             else ->
                 NavHostFragment.create(R.navigation.feed_nav_graph)

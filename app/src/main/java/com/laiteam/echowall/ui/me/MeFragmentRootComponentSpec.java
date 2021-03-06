@@ -8,25 +8,28 @@ import com.facebook.litho.annotations.LayoutSpec;
 import com.facebook.litho.annotations.OnCreateLayout;
 import com.facebook.litho.annotations.OnEvent;
 import com.facebook.litho.annotations.Prop;
+import com.laiteam.echowall.BuildConfig;
 import com.laiteam.echowall.R;
-import com.laiteam.echowall.base.DaggerBaseUserActivity;
+import com.laiteam.echowall.base.DaggerBaseActivity;
 import com.laiteam.echowall.base.environment.HasNavigator;
 import com.laiteam.echowall.base.environment.HasUserManager;
 import com.laiteam.echowall.component.LabelComponent;
 import com.laiteam.echowall.ui.onboarding.OnBoardingActivity;
 import com.laiteam.echowall.util.ContextWrapperUtils;
 
-/** This is a java class */
+/**
+ * This is a java class
+ */
 @LayoutSpec
-class MeActivityComponentSpec<E extends HasNavigator & HasUserManager> {
+class MeFragmentRootComponentSpec<E extends HasNavigator & HasUserManager> {
 
     @OnCreateLayout
     static <E extends HasNavigator, HasUserManage> Component onCreateLayout(ComponentContext c, @Prop E environment) {
         return Column.create(c)
+                .child(BuildConfig.DEBUG ? LabelComponent.create(c)
+                        .label(c.getString(R.string.debug)).clickHandler(MeFragmentRootComponent.onClickDebug(c)) : null)
                 .child(LabelComponent.create(c)
-                        .label(c.getString(R.string.debug)).clickHandler(MeActivityComponent.onClickDebug(c)))
-                .child(LabelComponent.create(c)
-                        .label(c.getString(R.string.logout)).clickHandler(MeActivityComponent.onClickLogout(c)))
+                        .label(c.getString(R.string.logout)).clickHandler(MeFragmentRootComponent.onClickLogout(c)))
                 .build();
     }
 
@@ -42,7 +45,7 @@ class MeActivityComponentSpec<E extends HasNavigator & HasUserManager> {
             ComponentContext c,
             @Prop E environment) {
         if (environment.getUserManager().onUserLogout()) {
-            DaggerBaseUserActivity<?> activity = ContextWrapperUtils.Companion.findContextOfType(c.getAndroidContext(), DaggerBaseUserActivity.class);
+            DaggerBaseActivity<?> activity = ContextWrapperUtils.Companion.findContextOfType(c.getAndroidContext(), DaggerBaseActivity.class);
             if (activity != null && !activity.isFinishing()) {
                 activity.startActivityAfterFinishThis(OnBoardingActivity.class);
             }
