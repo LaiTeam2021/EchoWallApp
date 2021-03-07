@@ -30,7 +30,7 @@ class LabelComponentSpec{
 
     static Component getTextComponent(ComponentContext c, CharSequence text) {
         return Text.create(c)
-                .textColorRes(R.color.black)
+                .textColorRes(R.color.primary_text_color)
                 .textSizeSp(16f)
                 .text(text)
                 .textStyle(BOLD).build();

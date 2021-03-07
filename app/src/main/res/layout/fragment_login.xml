@@ -1,39 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primary_light_surface"
     tools:context=".ui.onboarding.login.LoginFragment">
 
-
-    <EditText
-        android:id="@+id/user_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:hint="@string/user_name_hint"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+    <View
+        android:id="@+id/top_background"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_welcome"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/top_guideline"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/login"
-        app:layout_constraintLeft_toLeftOf="@id/user_name"
-        app:layout_constraintRight_toRightOf="@id/user_name"
-        app:layout_constraintTop_toBottomOf="@id/user_name" />
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <TextView
+        android:id="@+id/login_welcome_text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:text="@string/welcome"
+        android:textAlignment="center"
+        android:textColor="@color/primary_white_text_color"
+        android:textSize="@dimen/textsize_40_sp"
+        app:layout_constraintBottom_toBottomOf="@id/top_guideline"
+        app:layout_constraintStart_toStartOf="@id/login_email_address"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/login_email_address"
+        style="@style/inputBoxStyle"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/shape_login_input"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:paddingStart="@dimen/padding_20_dp"
+        android:paddingEnd="@dimen/padding_20_dp"
+        app:layout_constraintBottom_toBottomOf="@id/top_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/top_guideline"
+        app:layout_constraintWidth_percent="0.6" />
+
+    <EditText
+        android:id="@+id/login_password"
+        style="@style/inputBoxStyle"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/margin_5_dp"
+        android:background="@drawable/shape_login_input"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:paddingStart="@dimen/padding_20_dp"
+        android:paddingEnd="@dimen/padding_20_dp"
+        app:layout_constraintEnd_toEndOf="@id/login_email_address"
+        app:layout_constraintStart_toStartOf="@id/login_email_address"
+        app:layout_constraintTop_toBottomOf="@id/login_email_address" />
+
+    <ImageView
+        android:id="@+id/login_show_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_10_dp"
+        android:layout_marginBottom="@dimen/margin_13_dp"
+        android:src="@drawable/ic_outline_remove_red_eye_24"
+        app:layout_constraintBottom_toBottomOf="@+id/login_password"
+        app:layout_constraintEnd_toEndOf="@+id/login_password" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/margin_5_dp"
+        android:background="@drawable/shape_sign_in_button"
+        android:text="@string/sign_in"
+        android:textColor="@color/secondary_white"
+        app:layout_constraintEnd_toEndOf="@id/login_email_address"
+        app:layout_constraintStart_toStartOf="@id/login_email_address"
+        app:layout_constraintTop_toBottomOf="@id/login_password" />
+
+    <TextView
+        android:id="@+id/reset_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10_dp"
+        android:text="@string/reset_password"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_button" />
+
+    <TextView
         android:id="@+id/register"
-        app:layout_constraintTop_toBottomOf="@id/submit"
-        android:text="Login Fragment To Register" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reset_password" />
+
+    <View
+        android:id="@+id/login_divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_40_dp"
+        android:background="@color/primary_divider"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register"
+        app:layout_constraintWidth_percent="0.4" />
+
+    <TextView
+        android:id="@+id/login_or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_30_dp"
+        android:background="@color/primary_light_surface"
+        android:paddingHorizontal="@dimen/margin_16_dp"
+        android:text="@string/or"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register" />
+
+    <TextView
+        android:id="@+id/login_sign_in_with"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_50_dp"
+        android:text="@string/sign_in_with"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_divider" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

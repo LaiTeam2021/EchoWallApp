@@ -2,11 +2,11 @@
     <!-- Base application theme. -->
     <style name="Theme.EchoWall" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/yellow</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/primary_yellow</item>
+        <item name="colorOnPrimary">@color/primary_white</item>
         <!-- Secondary brand color. -->
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/yellow</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/primary_yellow</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

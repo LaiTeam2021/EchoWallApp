@@ -3,6 +3,7 @@ package com.laiteam.echowall.ui.me.debug
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.laiteam.echowall.base.DaggerBaseLithoFragment
 import com.laiteam.echowall.di.fragment.FragmentComponent
 import com.laiteam.echowall.di.user.ActivityComponent

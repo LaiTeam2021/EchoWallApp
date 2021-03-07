@@ -9,9 +9,19 @@
     <string name="me">我的</string>
 
     <!--    OnboardingActivity-->
+    <!--    login page-->
     <string name="user_name_hint">用户名</string>
     <string name="login">开始</string>
     <string name="error_user_name">用户名不能为空</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome">Welcome</string>
+    <string name="email">邮箱</string>
+    <string name="password">密码</string>
+    <string name="sign_in">登陆</string>
+    <string name="reset_password">忘记了密码？ <b>找回密码</b></string>
+    <string name="register">没有账户？ <b>注册</b></string>
+    <string name="sign_in_with">用以下方式登陆</string>
+    <string name="or">或者</string>
 
     <!--    MeFragment-->
     <string name="debug">Debug</string>
