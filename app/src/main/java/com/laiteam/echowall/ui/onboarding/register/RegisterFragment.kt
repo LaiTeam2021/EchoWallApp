@@ -3,11 +3,12 @@ package com.laiteam.echowall.ui.onboarding.register
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.laiteam.echowall.base.BaseFragment
 import com.laiteam.echowall.base.DaggerBaseFragment
 import com.laiteam.echowall.databinding.FragmentRegisterBinding
 import com.laiteam.echowall.ui.onboarding.OnBoardingActivity
 
-class RegisterFragment : DaggerBaseFragment<FragmentRegisterBinding>() {
+class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
