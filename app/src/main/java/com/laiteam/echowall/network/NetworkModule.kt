@@ -1,6 +1,8 @@
 package com.laiteam.echowall.network
 
+import android.app.Application
 import com.android.example.github.util.LiveDataCallAdapterFactory
+import com.ashokvarma.gander.GanderInterceptor
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import com.laiteam.echowall.App
 import com.laiteam.echowall.BuildConfig
@@ -16,16 +18,17 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRestAdapter(app: App): Retrofit {
+    fun provideRestAdapter(app: App, context: Application): Retrofit {
         val okHttpClient = OkHttpClient.Builder()
-            .addNetworkInterceptor(FlipperOkhttpInterceptor(app.networkFlipperPlugin))
-            .build()
+                .addNetworkInterceptor(GanderInterceptor(context).showNotification(true))
+                .addNetworkInterceptor(FlipperOkhttpInterceptor(app.networkFlipperPlugin))
+                .build()
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
-            .client(okHttpClient)
-            .addCallAdapterFactory(LiveDataCallAdapterFactory())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+                .baseUrl(BuildConfig.BASE_URL)
+                .client(okHttpClient)
+                .addCallAdapterFactory(LiveDataCallAdapterFactory())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
     }
 
     @Provides

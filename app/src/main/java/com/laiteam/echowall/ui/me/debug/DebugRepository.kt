@@ -15,7 +15,7 @@ class DebugRepository @Inject constructor(private val api: Api) : BaseRepository
 
     fun loadSeverInfo(): LiveData<NetworkResponse<SeverInfo>> {
         return object : NetworkBoundResource<SeverInfo, SeverInfo>(coroutineJob) {
-            override suspend fun saveResponse(item: SeverInfo) {
+            override suspend fun saveResponse(response: SeverInfo) {
             }
 
             override fun shouldFetch(data: SeverInfo?) = true

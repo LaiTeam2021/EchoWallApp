@@ -33,8 +33,9 @@ class ContextWrapperUtils {
          * @return the first context which is an instance of the specified class, or null if none exists
         </T> */
         fun <T> findContextOfType(
-                context: Context?, clazz: Class<out T>): T? {
-            var context = context
+            context: Context?, clazz: Class<out T>
+        ): T? {
+            var context = context as Context
             while (!clazz.isInstance(context)) {
                 context = if (context is ContextWrapper) {
                     val baseContext = context.baseContext

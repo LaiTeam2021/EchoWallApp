@@ -1,6 +1,8 @@
 package com.laiteam.echowall
 
 import android.app.Application
+import com.ashokvarma.gander.Gander
+import com.ashokvarma.gander.imdb.GanderIMDB
 import com.facebook.flipper.android.AndroidFlipperClient
 import com.facebook.flipper.android.utils.FlipperUtils
 import com.facebook.flipper.plugins.inspector.DescriptorMapping
@@ -26,19 +28,22 @@ class App : Application() {
     override fun onCreate() {
         appComponent = DaggerAppComponent.factory().create(AppModule(this))
         super.onCreate()
-        SoLoader.init(this, false)
-        if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(this)) {
-            val client = AndroidFlipperClient.getInstance(this)
-            networkFlipperPlugin = NetworkFlipperPlugin()
-            val descriptorMapping = DescriptorMapping.withDefaults()
-            LithoFlipperDescriptors.add(descriptorMapping)
-            client.addPlugin(SectionsFlipperPlugin(true));
-            client.addPlugin(InspectorFlipperPlugin(this, descriptorMapping))
-            client.addPlugin(
-                SharedPreferencesFlipperPlugin(this, SHARED_PREFERENCE)
-            )
-            client.addPlugin(networkFlipperPlugin)
-            client.start()
+        if (BuildConfig.DEBUG) {
+            Gander.setGanderStorage(GanderIMDB.getInstance());
+            if (FlipperUtils.shouldEnableFlipper(this)) {
+                SoLoader.init(this, false)
+                val client = AndroidFlipperClient.getInstance(this)
+                networkFlipperPlugin = NetworkFlipperPlugin()
+                val descriptorMapping = DescriptorMapping.withDefaults()
+                LithoFlipperDescriptors.add(descriptorMapping)
+                client.addPlugin(SectionsFlipperPlugin(true));
+                client.addPlugin(InspectorFlipperPlugin(this, descriptorMapping))
+                client.addPlugin(
+                    SharedPreferencesFlipperPlugin(this, SHARED_PREFERENCE)
+                )
+                client.addPlugin(networkFlipperPlugin)
+                client.start()
+            }
         }
     }
 

@@ -37,17 +37,17 @@ android {
     productFlavors {
         local {
             dimension "version"
-            buildConfigField('String', "BASE_URL", '"http://10.0.2.2:8080/"')
+            buildConfigField('String', "BASE_URL", '"https://10.0.2.2:8080/"')
         }
 
         dev {
             dimension "version"
-            buildConfigField('String', "BASE_URL", '"http://dev.api.developerforfun.com/"')
+            buildConfigField('String', "BASE_URL", '"https://dev.api.developerforfun.com/"')
         }
 
         prod {
             dimension "version"
-            buildConfigField 'String', 'ENDPOINT', '"http://dev.api.developerforfun.com/"'
+            buildConfigField 'String', 'ENDPOINT', '"https://dev.api.developerforfun.com/"'
         }
     }
 
@@ -109,6 +109,9 @@ dependencies {
     kapt "com.facebook.litho:litho-sections-processor:${rootProject.ext.litho_version}"
     kapt "com.facebook.litho:litho-processor:${rootProject.ext.litho_version}"
 
+    // Gander for windows
+    debugImplementation "com.ashokvarma.android:gander-imdb:${rootProject.ext.gander_version}"
+    releaseImplementation "com.ashokvarma.android:gander-no-op:${rootProject.ext.gander_version}"
 
     //testing
     testImplementation "org.mockito:mockito-android:${rootProject.ext.mockito_version}"
