@@ -28,7 +28,7 @@
             android:id="@+id/bottom_navigation_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:itemTextColor="@color/grey"
+            app:itemTextColor="@color/secondary_text_color"
             app:menu="@menu/bottom_nav_menu" />
     </com.google.android.material.bottomappbar.BottomAppBar>
 
@@ -37,8 +37,8 @@
         android:layout_height="wrap_content"
         app:layout_anchor="@id/bottomAppBar"
         app:borderWidth="0dp"
-        app:tint="@color/white"
-        android:backgroundTint="@color/yellow"
+        app:tint="@color/primary_white"
+        android:backgroundTint="@color/primary_yellow"
         app:srcCompat="@drawable/ic_add_24" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

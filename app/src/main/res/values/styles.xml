@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="inputBoxStyle">
+        <item name="android:background">@color/primary_light_surface</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/secondary_text_color</item>
+    </style>
+</resources>

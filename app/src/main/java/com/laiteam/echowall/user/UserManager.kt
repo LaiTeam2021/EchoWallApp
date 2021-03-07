@@ -1,6 +1,7 @@
 package com.laiteam.echowall.user
 
 import com.laiteam.echowall.di.user.UserComponent
+import com.laiteam.echowall.network.model.LoginInfo
 import com.laiteam.echowall.sharedpreference.Storage
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -18,6 +19,8 @@ class UserManager @Inject constructor(
     val isUserLoggedIn: Boolean
         get() = userComponent != null
 
+    var userToken: String? = null
+
     fun shouldAutoLogin(): Boolean {
         val sessionName = storage.getString(SESSION)
         return when (sessionName.isNullOrBlank()) {
@@ -31,8 +34,9 @@ class UserManager @Inject constructor(
         }
     }
 
-    fun onUserLogin(userName: String?) {
-        storage.setString(SESSION, userName!!)
+    fun onUserLogin(loginInfo: LoginInfo) {
+        storage.setString(SESSION, loginInfo.username)
+        setToken(loginInfo.token)
         userComponent = userComponentFactory.create()
     }
 
@@ -40,5 +44,8 @@ class UserManager @Inject constructor(
         storage.setString(SESSION, null)
         userComponent = null
         return true
+    }
+    fun setToken(token: String?){
+        userToken = token
     }
 }
