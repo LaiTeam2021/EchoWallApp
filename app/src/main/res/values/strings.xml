@@ -17,5 +17,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-
+    <!--    RegisterActivity-->
+    <string name="register">Register</string>
+    <string name="user_email_hint">邮箱</string>
+    <string name="user_password_hint">Password</string>
+    <string name="user_confirmPassword_hint">确认密码</string>
 </resources>

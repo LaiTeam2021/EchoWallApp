@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="radius_8dp">8dp</dimen>
+    <dimen name="register_margin">56dp</dimen>
+    <dimen name="register_marginTop">8dp</dimen>
+    <dimen name="register_height">56dp</dimen>
 </resources>
