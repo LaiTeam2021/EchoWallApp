@@ -36,7 +36,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 startActivityAfterFinishThis(MainActivity::class.java)
             }
         }
-        binding.register.setOnClickListener { _view ->
+        binding.register.setOnClickListener { _ ->
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
         }
     }
