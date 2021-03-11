@@ -41,4 +41,9 @@ class UserManager @Inject constructor(
         userComponent = null
         return true
     }
+
+    fun registerUser(userName: String, password: String) {
+        storage.setString(SESSION, userName!!)
+
+    }
 }
