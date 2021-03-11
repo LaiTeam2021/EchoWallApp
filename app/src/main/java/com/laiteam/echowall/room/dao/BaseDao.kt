@@ -9,8 +9,8 @@ interface BaseDao<T> {
     fun insert(t: T): Long
 
     @Update
-    fun update(t: T)
+    fun update(t: T): Boolean
 
     @Delete
-    fun delete(t: T)
+    fun delete(t: T): Boolean
 }

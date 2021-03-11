@@ -1,44 +1,36 @@
 package com.laiteam.echowall.di.module
 
+import android.content.Context
 import androidx.room.Room
+import com.laiteam.echowall.di.ApplicationContext
+import com.laiteam.echowall.di.DatabaseInfo
 import com.laiteam.echowall.room.AppDatabase
-import com.laiteam.echowall.room.dao.PersonDao
+import com.laiteam.echowall.room.dao.UserDao
+import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 
 @Module
-class DatabaseModule(@ApplicationContext context: Context) {
-    @ApplicationContext
-    private val mContext: Context
+class DatabaseModule(@field:ApplicationContext @param:ApplicationContext private val context: Context) {
 
     @DatabaseInfo
-    private val mDBName = "test_database.db"
+    private val dbName = "testDatabase.db"
 
     @Singleton
     @Provides
     fun provideDatabase(): AppDatabase {
         return Room.databaseBuilder(
-            mContext,
+            context,
             AppDatabase::class.java,
-            mDBName
+            dbName
         ).fallbackToDestructiveMigration().build()
     }
 
     @Provides
     @DatabaseInfo
     fun provideDatabaseName(): String {
-        return mDBName
+        return dbName
     }
 
-    @Singleton
-    @Provides
-    fun providePersonDao(db: AppDatabase): PersonDao? {
-        return db.personDao()
-    }
-
-
-    init {
-        mContext = context
-    }
 }

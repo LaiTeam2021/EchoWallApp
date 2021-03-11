@@ -12,6 +12,7 @@ buildscript {
         leak_canary_version = "2.6"
         litho_version = "0.39.0"
         nav_version = "2.3.3"
+        room_version = "2.2.6"
     }
 
     repositories {

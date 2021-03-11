@@ -99,7 +99,7 @@ dependencies {
     debugImplementation "com.squareup.leakcanary:leakcanary-android:${rootProject.ext.leak_canary_version}"
 
     //litho
-    implementation "com.facebook.litho:litho-fresco:${rootProject.ext.litho_version}"
+    implementation "com.facebook.litho:litho-fresco:"
     implementation "com.facebook.litho:litho-core:${rootProject.ext.litho_version}"
     implementation "com.facebook.litho:litho-widget:${rootProject.ext.litho_version}"
     implementation "com.facebook.litho:litho-sections-core:${rootProject.ext.litho_version}"
@@ -110,13 +110,12 @@ dependencies {
     kapt "com.facebook.litho:litho-processor:${rootProject.ext.litho_version}"
 
     //room database
-    def room_version = "2.2.6"
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-runtime:${rootProject.ext.room_version}"
+    kapt "androidx.room:room-compiler:${rootProject.ext.room_version}"
     // optional - Kotlin Extensions and Coroutines support for Room
-    implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-ktx:${rootProject.ext.room_version}"
     // optional - Test helpers
-    testImplementation "androidx.room:room-testing:$room_version"
+    testImplementation "androidx.room:room-testing:${rootProject.ext.room_version}"
 
     //testing
     testImplementation "org.mockito:mockito-android:${rootProject.ext.mockito_version}"

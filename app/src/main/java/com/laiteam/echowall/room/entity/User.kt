@@ -6,11 +6,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-@Entity(tableName = "TB_PERSON")
-class Person {
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "person_id")
-    var person_id = 0
+@Entity(tableName = "user")
+class User {
+    @PrimaryKey
+    @ColumnInfo(name = "user_id")
+    var userId = 0
 
     @ColumnInfo(name = "name")
     var name: String? = null
