@@ -13,6 +13,7 @@ buildscript {
         litho_version = "0.39.0"
         nav_version = "2.3.3"
         gander_version = "3.1.0"
+        room_version = "2.2.6"
     }
 
     repositories {
