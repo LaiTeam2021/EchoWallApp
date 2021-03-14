@@ -32,7 +32,7 @@ class LoginViewModel @Inject constructor(loginRepository: LoginRepository) : Bas
 
     val loginInfo: LiveData<NetworkResponse<LoginInfo>> =
         loginRequestBody.switchMap { loginRequestBody ->
-            if (loginRequestBody.email.matches(Regex(REGULAR_EXPRESSION))) {
+            if (!loginRequestBody.email.matches(Regex(REGULAR_EXPRESSION))) {
                 ErrorLiveData.create(NetworkResponse.error("invalid email", null))
             } else if (loginRequestBody.password.length < 6) {
                 ErrorLiveData.create(NetworkResponse.error("password must be at least 6 characters", null))
