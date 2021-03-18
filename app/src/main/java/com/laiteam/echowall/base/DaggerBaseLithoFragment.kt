@@ -6,7 +6,7 @@ import com.facebook.litho.Component
 import com.facebook.litho.ComponentContext
 import com.laiteam.echowall.databinding.FragmentBaseLithoBinding
 
-abstract class DaggerBaseLithoFragment :
+abstract class DaggerBaseLithoFragment<T> :
     DaggerBaseFragment<FragmentBaseLithoBinding>() {
     protected val c: ComponentContext by lazy {
         ComponentContext(context)

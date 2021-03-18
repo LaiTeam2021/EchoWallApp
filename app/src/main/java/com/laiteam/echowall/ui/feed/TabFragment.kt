@@ -4,7 +4,7 @@ import androidx.core.os.bundleOf
 import com.laiteam.echowall.base.DaggerBaseLithoFragment
 import com.laiteam.echowall.component.LabelComponent
 
-class TabFragment : DaggerBaseLithoFragment() {
+class TabFragment : DaggerBaseLithoFragment<Any?>() {
     companion object {
         private const val MY_TAB_NAME = "tab_name"
 

@@ -5,9 +5,13 @@ import com.laiteam.echowall.base.environment.Navigator
 import com.laiteam.echowall.di.fragment.FragmentComponent
 import javax.inject.Inject
 
+<<<<<<< HEAD
 class MeFragment : DaggerBaseLithoFragment() {
     @Inject
     lateinit var navigator: Navigator
+=======
+class MeFragment : DaggerBaseLithoFragment<Any?>() {
+>>>>>>> combine 4 commits into 1
 
     override fun initData() {
         val environment = MeEnvironment(navigator, userManager)

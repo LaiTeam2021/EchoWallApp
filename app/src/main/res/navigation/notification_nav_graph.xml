@@ -3,6 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/notification_nav_graph"
     app:startDestination="@id/notificationFragment">
 
+<!--    <fragment-->
+<!--        android:id="@+id/allFragment"-->
+<!--        android:name="com.laiteam.echowall.ui.notification.all.AllFragment"-->
+<!--        android:label="allFragment" />-->
     <fragment
         android:id="@+id/notificationFragment"
         android:name="com.laiteam.echowall.ui.notification.NotificationFragment"

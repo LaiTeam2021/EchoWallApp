@@ -105,6 +105,11 @@ dependencies {
     implementation "com.facebook.litho:litho-sections-core:${rootProject.ext.litho_version}"
     implementation "com.facebook.litho:litho-sections-widget:${rootProject.ext.litho_version}"
     compileOnly "com.facebook.litho:litho-sections-annotations:${rootProject.ext.litho_version}"
+<<<<<<< HEAD
+=======
+    annotationProcessor 'com.facebook.litho:litho-sections-processor:0.33.0'
+
+>>>>>>> combine 4 commits into 1
     kapt "com.facebook.litho:litho-sections-processor:${rootProject.ext.litho_version}"
     kapt "com.facebook.litho:litho-processor:${rootProject.ext.litho_version}"
 

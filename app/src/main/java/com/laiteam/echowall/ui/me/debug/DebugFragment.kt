@@ -8,7 +8,7 @@ import com.laiteam.echowall.di.fragment.FragmentComponent
 import com.laiteam.echowall.network.response.Status
 import javax.inject.Inject
 
-class DebugFragment : DaggerBaseLithoFragment() {
+class DebugFragment : DaggerBaseLithoFragment<Any?>() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

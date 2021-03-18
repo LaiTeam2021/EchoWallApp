@@ -21,6 +21,10 @@ class FeedFragment : DaggerBaseFragment<FragmentFeedBinding>() {
 
     override fun initData() {
         binding.tabLayout.setupWithViewPager(binding.pager)
+<<<<<<< HEAD
         binding.pager.adapter = FeedPagerAdapter(listOf("求职", "灌水", "移民"), childFragmentManager)
+=======
+        binding.pager.adapter = FeedPagerAdapter(listOf("求职", "灌水", "移民", "随便"), getParentFragmentManager())
+>>>>>>> combine 4 commits into 1
     }
 }
