@@ -14,6 +14,8 @@ import com.laiteam.echowall.base.DaggerBaseActivity;
 import com.laiteam.echowall.base.environment.HasNavigator;
 import com.laiteam.echowall.base.environment.HasUserManager;
 import com.laiteam.echowall.component.LabelComponent;
+import com.laiteam.echowall.ui.main.MainFragment;
+import com.laiteam.echowall.ui.main.MainFragmentDirections;
 import com.laiteam.echowall.ui.onboarding.OnBoardingActivity;
 import com.laiteam.echowall.util.ContextWrapperUtils;
 
@@ -37,7 +39,7 @@ class MeFragmentRootComponentSpec<E extends HasNavigator & HasUserManager> {
     static <E extends HasNavigator & HasUserManager> void onClickDebug(
             ComponentContext c,
             @Prop E environment) {
-        environment.getNavigator().navigate(MeFragmentDirections.Companion.actionMeFragmentToDebugFragment());
+        environment.getNavigator().navigateFrom(MainFragmentDirections.Companion.actionMainFragmentToDebugFragment(), MainFragment.class);
     }
 
     @OnEvent(ClickEvent.class)
