@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.laiteam.echowall.R
 import com.laiteam.echowall.base.BaseFragment
@@ -54,7 +53,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             binding.loginShowPassword.setImageResource(if (isVisible) R.drawable.ic_baseline_remove_red_eye_24 else R.drawable.ic_outline_remove_red_eye_24)
         }
         // sign up
-        binding.register.setOnClickListener { _view ->
+        binding.register.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
         }
         // as below are temp function
