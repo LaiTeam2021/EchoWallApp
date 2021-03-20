@@ -108,6 +108,14 @@ dependencies {
     kapt "com.facebook.litho:litho-sections-processor:${rootProject.ext.litho_version}"
     kapt "com.facebook.litho:litho-processor:${rootProject.ext.litho_version}"
 
+    //room database
+    implementation "androidx.room:room-runtime:${rootProject.ext.room_version}"
+    kapt "androidx.room:room-compiler:${rootProject.ext.room_version}"
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:${rootProject.ext.room_version}"
+    // optional - Test helpers
+    testImplementation "androidx.room:room-testing:${rootProject.ext.room_version}"
+
     // Gander for windows
     debugImplementation "com.ashokvarma.android:gander-imdb:${rootProject.ext.gander_version}"
     releaseImplementation "com.ashokvarma.android:gander-no-op:${rootProject.ext.gander_version}"

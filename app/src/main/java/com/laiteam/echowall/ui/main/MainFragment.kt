@@ -54,7 +54,7 @@ class MainFragment : DaggerBaseFragment<FragmentMainBinding>() {
         return FragmentMainBinding.inflate(inflater, container, false)
     }
 
-    open override fun setupInjection(fragmentComponent: FragmentComponent) {
+    override fun setupInjection(fragmentComponent: FragmentComponent) {
         fragmentComponent.inject(this)
     }
 }
