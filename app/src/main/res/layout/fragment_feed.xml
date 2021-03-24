@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_light_surface"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.feed.FeedFragment">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"/>
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            app:tabMode="scrollable"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        app:tabMode="scrollable"
+        app:tabTextColor="@color/primary_yellow"
+        app:tabSelectedTextColor="@color/primary_white_text_color"
+        app:tabIndicator="@null"
+        app:tabBackground="@drawable/feed_tab_selector"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="1dp"
+        android:background="@drawable/outline_round_bottom_shape"
+        android:layout_height="wrap_content" />
 
-    </androidx.viewpager.widget.ViewPager>
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

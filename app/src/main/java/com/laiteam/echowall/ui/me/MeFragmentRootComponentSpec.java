@@ -53,5 +53,4 @@ class MeFragmentRootComponentSpec<E extends HasNavigator & HasUserManager> {
             }
         }
     }
-
 }

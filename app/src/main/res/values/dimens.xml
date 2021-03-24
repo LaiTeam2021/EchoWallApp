@@ -3,6 +3,7 @@
 <!--        login page -->
     <dimen name="login_input_height">40dp</dimen>
 
+    <dimen name="icon_size">32dp</dimen>
     <dimen name="radius_8dp">8dp</dimen>
 
     <dimen name="margin_4_dp">5dp</dimen>
