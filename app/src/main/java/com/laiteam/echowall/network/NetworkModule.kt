@@ -18,17 +18,24 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRestAdapter(app: App, context: Application): Retrofit {
+    fun provideRestAdapter(app: App, context: Application, networkInterceptor: NetworkInterceptor): Retrofit {
         val okHttpClient = OkHttpClient.Builder()
-                .addNetworkInterceptor(GanderInterceptor(context).showNotification(true))
-                .addNetworkInterceptor(FlipperOkhttpInterceptor(app.networkFlipperPlugin))
-                .build()
+            .addNetworkInterceptor(GanderInterceptor(context).showNotification(true))
+            .addNetworkInterceptor(networkInterceptor)
+            .addNetworkInterceptor(FlipperOkhttpInterceptor(app.networkFlipperPlugin))
+            .build()
         return Retrofit.Builder()
-                .baseUrl(BuildConfig.BASE_URL)
-                .client(okHttpClient)
-                .addCallAdapterFactory(LiveDataCallAdapterFactory())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+            .baseUrl(BuildConfig.BASE_URL)
+            .client(okHttpClient)
+            .addCallAdapterFactory(LiveDataCallAdapterFactory())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun providerNetworkInterceptor(networkHeaderProvider: NetworkHeaderProvider): NetworkInterceptor {
+        return NetworkInterceptor(networkHeaderProvider)
     }
 
     @Provides

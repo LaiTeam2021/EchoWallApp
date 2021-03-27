@@ -7,12 +7,12 @@ import com.facebook.litho.annotations.LayoutSpec;
 import com.facebook.litho.annotations.OnCreateLayout;
 import com.facebook.litho.annotations.Prop;
 import com.laiteam.echowall.component.LabelComponent;
-import com.laiteam.echowall.network.model.SeverInfo;
+import com.laiteam.echowall.network.response.SeverResponse;
 
 @LayoutSpec
 class DebugFragmentRootComponentSpec {
     @OnCreateLayout
-    static Component onCreateLayout(ComponentContext c, @Prop SeverInfo severInfo) {
+    static Component onCreateLayout(ComponentContext c, @Prop SeverResponse severInfo) {
         return Column.create(c)
                 .child(LabelComponent.create(c)
                         .label("Environment: " + severInfo.getEnvironment()))
