@@ -4,7 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.switchMap
 import com.laiteam.echowall.base.BaseViewModel
-import com.laiteam.echowall.network.model.LoginInfo
+import com.laiteam.echowall.network.model.LoginModel
+import com.laiteam.echowall.network.response.LoginResponse
 import com.laiteam.echowall.network.request.LoginRequestBody
 import com.laiteam.echowall.network.response.NetworkResponse
 import com.laiteam.echowall.util.ErrorLiveData
@@ -21,7 +22,7 @@ class LoginViewModel @Inject constructor(loginRepository: LoginRepository) : Bas
     val passwordVisible: LiveData<Boolean>
         get() = _passwordVisible
 
-    private val loginRequestBody = MutableLiveData<LoginRequestBody>()
+    val loginRequestBody = MutableLiveData<LoginRequestBody>()
     fun setLogin(email: String, password: String) {
         loginRequestBody.value =
             LoginRequestBody(
@@ -30,7 +31,7 @@ class LoginViewModel @Inject constructor(loginRepository: LoginRepository) : Bas
             )
     }
 
-    val loginInfo: LiveData<NetworkResponse<LoginInfo>> =
+    val loginInfo: LiveData<NetworkResponse<LoginModel>> =
         loginRequestBody.switchMap { loginRequestBody ->
             if (!loginRequestBody.email.matches(Regex(REGULAR_EXPRESSION))) {
                 ErrorLiveData.create(NetworkResponse.error("invalid email", null))
