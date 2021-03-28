@@ -1,11 +1,26 @@
 package com.laiteam.echowall.ui.notification
 
-import com.facebook.litho.widget.Text
-import com.laiteam.echowall.base.DaggerBaseLithoFragment
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import com.laiteam.echowall.base.DaggerBaseFragment
+import com.laiteam.echowall.databinding.FragmentNotificationBinding
+import com.laiteam.echowall.di.fragment.FragmentComponent
 
-class NotificationFragment : DaggerBaseLithoFragment() {
+class NotificationFragment : DaggerBaseFragment<FragmentNotificationBinding>() {
+
+    override fun createFragmentViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentNotificationBinding {
+        return FragmentNotificationBinding.inflate(layoutInflater, container, false)
+    }
+
+    override fun setupInjection(fragmentComponent: FragmentComponent) {
+        fragmentComponent.inject(this)
+    }
 
     override fun initData() {
-        setComponentAsync(Text.create(c).text("Notification").build())
+        binding.tabLayout.setupWithViewPager(binding.pager)
+        binding.pager.adapter = NotificationPagerAdapter(listOf("All", "Unread"), childFragmentManager)
     }
 }

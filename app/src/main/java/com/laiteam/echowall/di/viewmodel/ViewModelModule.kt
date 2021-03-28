@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.laiteam.echowall.mvvm.ViewModelFactory
 import com.laiteam.echowall.ui.me.debug.DebugViewModel
+import com.laiteam.echowall.ui.notification.NotificationViewModel
 import com.laiteam.echowall.ui.onboarding.login.LoginViewModel
 import dagger.Binds
 import dagger.Module
@@ -24,5 +25,11 @@ abstract class ViewModelModule {
     internal abstract fun loginViewModel(viewModel: LoginViewModel): ViewModel
 
     @Binds
+    @IntoMap
+    @ViewModelKey(NotificationViewModel::class)
+    internal abstract fun notificationViewModel(viewModel: NotificationViewModel): ViewModel
+
+    @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+
 }
