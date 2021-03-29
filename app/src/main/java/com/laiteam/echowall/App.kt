@@ -3,6 +3,7 @@ package com.laiteam.echowall
 import android.app.Application
 import com.ashokvarma.gander.Gander
 import com.ashokvarma.gander.imdb.GanderIMDB
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.flipper.android.AndroidFlipperClient
 import com.facebook.flipper.android.utils.FlipperUtils
 import com.facebook.flipper.plugins.inspector.DescriptorMapping
@@ -32,6 +33,7 @@ class App : Application() {
             Gander.setGanderStorage(GanderIMDB.getInstance());
             if (FlipperUtils.shouldEnableFlipper(this)) {
                 SoLoader.init(this, false)
+                Fresco.initialize(this)
                 val client = AndroidFlipperClient.getInstance(this)
                 networkFlipperPlugin = NetworkFlipperPlugin()
                 val descriptorMapping = DescriptorMapping.withDefaults()
