@@ -107,6 +107,8 @@ dependencies {
     compileOnly "com.facebook.litho:litho-sections-annotations:${rootProject.ext.litho_version}"
     kapt "com.facebook.litho:litho-sections-processor:${rootProject.ext.litho_version}"
     kapt "com.facebook.litho:litho-processor:${rootProject.ext.litho_version}"
+    implementation "com.facebook.fresco:fresco:${rootProject.ext.litho_version}"
+    implementation "com.facebook.litho:litho-fresco:${rootProject.ext.litho_version}"
 
     //room database
     implementation "androidx.room:room-runtime:${rootProject.ext.room_version}"

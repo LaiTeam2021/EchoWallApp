@@ -22,7 +22,11 @@ class NotificationTabFragment : DaggerBaseLithoFragment(){
     override fun initData() {
         arguments?.getString(MY_TAB_NAME)?.let { tabName ->
             setComponentAsync(RecyclerCollectionComponent.create(c).disablePTR(true)
-                            .section(NotificationSection.create(SectionContext(c)).size(arguments?.getString(MY_TAB_NAME)!!.length).build()).build())
+                            .section(NotificationSection.create(SectionContext(c))
+                                    .size(arguments?.getString(MY_TAB_NAME)!!.length)
+                                    .isRead(false)
+                                    .build())
+                            .build())
 
         }
     }

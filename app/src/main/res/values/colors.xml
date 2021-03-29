@@ -6,6 +6,7 @@
     <color name="primary_white">#FFFFFFFF</color>
     <color name="primary_yellow">#F5B844</color>
     <color name="primary_divider">#BFBEBC</color>
+    <color name="primary_photo_profile_placeholder">#F2F2F2</color>
     <color name="secondary_white">#FEFEFE</color>
     <color name="primary_light_surface">#F6F6F4</color>
 </resources>
