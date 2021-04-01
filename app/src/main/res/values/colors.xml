@@ -8,4 +8,5 @@
     <color name="primary_divider">#BFBEBC</color>
     <color name="secondary_white">#FEFEFE</color>
     <color name="primary_light_surface">#F6F6F4</color>
+    <color name="primary_red_text_color">#FF0000</color>
 </resources>

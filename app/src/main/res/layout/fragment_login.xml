@@ -34,7 +34,8 @@
         android:textSize="@dimen/textsize_40_sp"
         app:layout_constraintBottom_toBottomOf="@id/top_guideline"
         app:layout_constraintStart_toStartOf="@id/login_email_address"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.493" />
 
     <EditText
         android:id="@+id/login_email_address"
@@ -58,7 +59,7 @@
         style="@style/inputBoxStyle"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="@dimen/margin_8_dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/shape_login_input"
         android:ems="10"
         android:hint="@string/password"
@@ -79,6 +80,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/login_password"
         app:layout_constraintEnd_toEndOf="@+id/login_password" />
 
+    <TextView
+        android:id="@+id/error_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_4_dp"
+        android:text=""
+        android:textColor="@color/primary_red_text_color"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@id/login_email_address"
+        app:layout_constraintStart_toStartOf="@id/login_email_address"
+        app:layout_constraintTop_toBottomOf="@id/login_password" />
+
     <Button
         android:id="@+id/login_button"
         android:layout_width="0dp"
@@ -89,7 +102,7 @@
         android:textColor="@color/secondary_white"
         app:layout_constraintEnd_toEndOf="@id/login_email_address"
         app:layout_constraintStart_toStartOf="@id/login_email_address"
-        app:layout_constraintTop_toBottomOf="@id/login_password" />
+        app:layout_constraintTop_toBottomOf="@id/error_message" />
 
     <TextView
         android:id="@+id/reset_password"
@@ -106,9 +119,9 @@
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_12_dp"
         android:text="@string/register"
         android:textAlignment="center"
-        android:layout_marginTop="@dimen/margin_12_dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reset_password" />
