@@ -1,13 +1,19 @@
 package com.laiteam.echowall.ui.onboarding.login
 
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.laiteam.echowall.R
 import com.laiteam.echowall.base.BaseFragment
@@ -52,21 +58,53 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             binding.loginPassword.transformationMethod = if (isVisible) HideReturnsTransformationMethod.getInstance() else PasswordTransformationMethod.getInstance()
             binding.loginShowPassword.setImageResource(if (isVisible) R.drawable.ic_baseline_remove_red_eye_24 else R.drawable.ic_outline_remove_red_eye_24)
         }
+
+        // error message
+        viewModel.errorMessage.observe(this) { message ->
+            binding.errorMessage.setText(message);
+        }
         // sign up
         binding.register.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
         }
-        // as below are temp function
+        // editText textChangedListener
+        binding.loginEmailAddress.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                viewModel._errorMessage.value = ""
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+        binding.loginPassword.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                viewModel._errorMessage.value = ""
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
         viewModel.loginInfo.observe(this) {
             when (it.status) {
                 Status.SUCCESS -> it.data?.let { data ->
-                    Toast.makeText(context, "Welcome!", Toast.LENGTH_SHORT).show()
-                    // still need to update userManager
                     userManager.onUserLogin(data)
                     startActivityAfterFinishThis(MainActivity::class.java)
+                    viewModel._errorMessage.value = ""
                 }
-                Status.ERROR -> {
-                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                Status.LOCAL_INVALID_INPUT -> it.let {
+                    viewModel._errorMessage.value = getString(it.errorRes)
+                    binding.errorMessage.startAnimation(AnimationUtils.loadAnimation(context, R.anim.edit_text_shake))
+
+                }
+                Status.ERROR -> it.let {
+                    viewModel._errorMessage.value = it.message
+                    binding.errorMessage.startAnimation(AnimationUtils.loadAnimation(context, R.anim.edit_text_shake))
                 }
                 else -> {
 

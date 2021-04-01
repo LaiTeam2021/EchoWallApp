@@ -20,6 +20,8 @@
     <string name="register">DON\'T HAVE AN ACCOUNT? <b>SIGN UP!</b></string>
     <string name="sign_in_with">SIGN IN WITH</string>
     <string name="or">OR</string>
+    <string name="invalid_email_error">Invalid email</string>
+    <string name="invalid_password_error">Password must be at least 6 characters</string>
     <!--    MeFragment-->
     <string name="debug">Debug</string>
     <string name="logout">Logout</string>
