@@ -20,5 +20,4 @@ interface AppComponent {
     fun userComponent(): UserComponent.Factory
 
     fun onBoardingComponent(): OnBoardingComponent.Factory
-
 }

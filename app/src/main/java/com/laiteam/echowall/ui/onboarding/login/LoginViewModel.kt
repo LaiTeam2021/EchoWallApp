@@ -3,6 +3,7 @@ package com.laiteam.echowall.ui.onboarding.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.switchMap
+import com.laiteam.echowall.R
 import com.laiteam.echowall.base.BaseViewModel
 import com.laiteam.echowall.network.model.LoginModel
 import com.laiteam.echowall.network.response.LoginResponse
@@ -34,7 +35,7 @@ class LoginViewModel @Inject constructor(loginRepository: LoginRepository) : Bas
     val loginInfo: LiveData<NetworkResponse<LoginModel>> =
         loginRequestBody.switchMap { loginRequestBody ->
             if (!loginRequestBody.email.matches(Regex(REGULAR_EXPRESSION))) {
-                ErrorLiveData.create(NetworkResponse.error("invalid email", null))
+                ErrorLiveData.create(NetworkResponse.localError(R.string.error_user_name))
             } else if (loginRequestBody.password.length < 6) {
                 ErrorLiveData.create(NetworkResponse.error("password must be at least 6 characters", null))
             } else {

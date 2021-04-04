@@ -68,6 +68,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 Status.ERROR -> {
                     Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                 }
+                Status.LOCAL_ERROR -> {
+                    Toast.makeText(context, getString(it.errorRes), Toast.LENGTH_SHORT).show()
+                }
                 else -> {
 
                 }

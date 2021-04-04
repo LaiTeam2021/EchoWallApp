@@ -1,6 +1,5 @@
 package com.laiteam.echowall.network
 
-import android.app.Application
 import com.android.example.github.util.LiveDataCallAdapterFactory
 import com.ashokvarma.gander.GanderInterceptor
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
@@ -18,9 +17,9 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRestAdapter(app: App, context: Application, networkInterceptor: NetworkInterceptor): Retrofit {
+    fun provideRestAdapter(app: App, networkInterceptor: NetworkInterceptor): Retrofit {
         val okHttpClient = OkHttpClient.Builder()
-            .addNetworkInterceptor(GanderInterceptor(context).showNotification(true))
+            .addNetworkInterceptor(GanderInterceptor(app).showNotification(true))
             .addNetworkInterceptor(networkInterceptor)
             .addNetworkInterceptor(FlipperOkhttpInterceptor(app.networkFlipperPlugin))
             .build()
