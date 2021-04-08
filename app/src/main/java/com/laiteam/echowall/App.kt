@@ -1,6 +1,7 @@
 package com.laiteam.echowall
 
 import android.app.Application
+import android.provider.Telephony.Carriers.PASSWORD
 import com.ashokvarma.gander.Gander
 import com.ashokvarma.gander.imdb.GanderIMDB
 import com.facebook.flipper.android.AndroidFlipperClient
@@ -10,11 +11,15 @@ import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin
 import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import com.facebook.flipper.plugins.sections.SectionsFlipperPlugin
 import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPlugin
+import com.facebook.flipper.plugins.databases.DatabasesFlipperPlugin
+import com.facebook.flipper.plugins.databases.impl.SqliteDatabaseDriver
 import com.facebook.litho.editor.flipper.LithoFlipperDescriptors
 import com.facebook.soloader.SoLoader
 import com.laiteam.echowall.di.application.AppComponent
 import com.laiteam.echowall.di.application.AppModule
 import com.laiteam.echowall.di.application.DaggerAppComponent
+import com.laiteam.echowall.room.DatabaseConnectionProvider
+import com.laiteam.echowall.room.DatabaseFileProvider
 
 class App : Application() {
 
@@ -41,6 +46,11 @@ class App : Application() {
                 client.addPlugin(
                     SharedPreferencesFlipperPlugin(this, SHARED_PREFERENCE)
                 )
+                client.addPlugin(DatabasesFlipperPlugin(SqliteDatabaseDriver(
+                        this,
+                        DatabaseFileProvider(this),
+                        DatabaseConnectionProvider { PASSWORD }//?????
+                )));
                 client.addPlugin(networkFlipperPlugin)
                 client.start()
             }
